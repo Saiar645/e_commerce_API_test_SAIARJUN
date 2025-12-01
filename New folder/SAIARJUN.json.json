@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "1cec5791-36f2-4a34-a2ff-4279b8def47b",
+		"name": "SAI ARJUN 24MSS047 (CAR INFO)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50258840",
+		"_collection_link": "https://saiarjun0910-6216320.postman.co/workspace/Sai-Arjun's-Workspace~be1a4c7f-7ab1-4b6f-820c-52d41cb465a8/collection/50258840-1cec5791-36f2-4a34-a2ff-4279b8def47b?action=share&source=collection_link&creator=50258840"
+	},
+	"item": [
+		{
+			"name": "get cars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"server is exist\",() =>{\r",
+							"    pm.expect(pm.response.headers.get(\"Server\")).to.be.exist\r",
+							"})\r",
+							"\r",
+							"pm.test(\"CORS check\",()=>{\r",
+							"    let expectedCORS=['Access-Control-Allow-Headers','Access-Control-Allow-Methods','Access-Control-Allow-Origin']\r",
+							"     expectedCORS.forEach(h => {\r",
+							"        pm.response.to.have.header(h)\r",
+							"     })\r",
+							"})\r",
+							"pm.test(\"successful response\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"pm.test(\"response ok\", function () {\r",
+							"    pm.response.to.have.status('OK');\r",
+							"});\r",
+							"console.log(pm.response);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/cars",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"console.log(pm.response);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{$randomProductName}}\",\r\n    \"price\": {{$randomPrice}},\r\n    \"stock\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{endpoint}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"server is exist\",() =>{\r",
+							"    pm.expect(pm.response.headers.get(\"Server\")).to.be.exist\r",
+							"})\r",
+							"\r",
+							"pm.test(\"CORS check\",()=>{\r",
+							"    let expectedCORS=['Access-Control-Allow-Headers','Access-Control-Allow-Methods','Access-Control-Allow-Origin']\r",
+							"     expectedCORS.forEach(h => {\r",
+							"        pm.response.to.have.header(h)\r",
+							"     })\r",
+							"})\r",
+							"pm.test(\"successful response\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"pm.test(\"response ok\", function () {\r",
+							"    pm.response.to.have.status('OK');\r",
+							"});\r",
+							"console.log(pm.response);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/cars/:carid",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"cars",
+						":carid"
+					],
+					"variable": [
+						{
+							"key": "carid",
+							"value": "19"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"server is exist\",() =>{\r",
+							"    pm.expect(pm.response.headers.get(\"Server\")).to.be.exist\r",
+							"})\r",
+							"\r",
+							"pm.test(\"CORS check\",()=>{\r",
+							"    let expectedCORS=['Access-Control-Allow-Headers','Access-Control-Allow-Methods','Access-Control-Allow-Origin']\r",
+							"     expectedCORS.forEach(h => {\r",
+							"        pm.response.to.have.header(h)\r",
+							"     })\r",
+							"})\r",
+							"pm.test(\"successful response\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"pm.test(\"response ok\", function () {\r",
+							"    pm.response.to.have.status('OK');\r",
+							"});\r",
+							"console.log(pm.response);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"price\": \"100000\",\r\n    \"stock\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/cars/:carid",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"cars",
+						":carid"
+					],
+					"variable": [
+						{
+							"key": "carid",
+							"value": "19"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"server is exist\",() =>{\r",
+							"    pm.expect(pm.response.headers.get(\"Server\")).to.be.exist\r",
+							"})\r",
+							"\r",
+							"pm.test(\"CORS check\",()=>{\r",
+							"    let expectedCORS=['Access-Control-Allow-Headers','Access-Control-Allow-Methods','Access-Control-Allow-Origin']\r",
+							"     expectedCORS.forEach(h => {\r",
+							"        pm.response.to.have.header(h)\r",
+							"     })\r",
+							"})\r",
+							"pm.test(\"successful response\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"pm.test(\"response ok\", function () {\r",
+							"    pm.response.to.have.status('OK');\r",
+							"});\r",
+							"console.log(pm.response);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\":\"100000\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/cars/:carid",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"cars",
+						":carid"
+					],
+					"variable": [
+						{
+							"key": "carid",
+							"value": "19"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"not found\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/cars/:carid",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"cars",
+						":carid"
+					],
+					"variable": [
+						{
+							"key": "carid",
+							"value": "18"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": ""
+		}
+	]
+}
